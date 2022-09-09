@@ -1,3 +1,4 @@
+const Food = require("./food");
 class Player {
 
     constructor(name, startingRoom) {
@@ -30,27 +31,38 @@ class Player {
             }
         }
     }
+/* Right now, I'm cluesless and the mocha test not working is only making matters worse*/
 
     takeItem(itemName) {
-
         // Fill this in
-
+        const i = this.currentRoom.items.indexOf(itemName);
+        const item = this.currentRoom.items.splice(i, 1);
+        this.items.push(...item);
     }
 
     dropItem(itemName) {
-
         // Fill this in
+        const i = this.items.indexOf(itemName);
+        const item = this.items.splice(i, 1);
+        this.currentRoom.items.push(...item);
     }
 
     eatItem(itemName) {
         // Fill this in
+        const i = this.items.indexOf(itemName);
+        const item = this.getItemByName(itemName);
 
+        if (item instanceof Food) {
+            this.items.splice(i, 1);
+        }
     }
 
     getItemByName(name) {
-
         // Fill this in
+        return this.items.find(item => item.name === name);
     }
+
+
 }
 
 module.exports = {
