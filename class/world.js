@@ -1,6 +1,8 @@
 const { Room } = require('./room');
 const { Item } = require('./item');
 const { Food } = require('./food');
+const worldData =  require('../data/world-data');
+
 
 class World {
     constructor() {
@@ -46,7 +48,10 @@ class World {
             if (itemData.isFood) {
                 console.log("ERROR: Food not supported yet.");
                 // Fill this in
-                return;
+/*I still found this as confusing as others, I didn't know what to do*/
+
+                newItem = new Food(itemData.name, itemData.description);
+
             } else {
                 newItem = new Item(itemData.name, itemData.description);
             }
