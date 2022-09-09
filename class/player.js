@@ -1,4 +1,4 @@
-const Food = require("./food");
+const {Food} = require("./food");
 class Player {
 
     constructor(name, startingRoom) {
